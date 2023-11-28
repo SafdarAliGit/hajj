@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}Detail Application{% endblock %}</title>
+{% block content %}
+    <div class="heading-container">
+        <h5 class="heading">Detail Application</h5>
+    </div>
+    <div class="ro-outer">
+        <a href="{% url 'hajj_application:list' %}">
+            <span class=" new_button button-green "> All Applications</span>
+        </a>
+        <span type="button" class="close_btn button-red" aria-hidden="true"
+              onClick="javascript:history.go(-1);">X</span>
+    </div>
+    <table id="detail_application">
+        <tbody>
+        <tr>
+            <td>Hajj Application #</td>
+            <td>{{ hajj_application_item.hajj_application_no }}</td>
+
+            <td>Enrollment #</td>
+            <td>{{ hajj_application_item.enrollment_no }}</td>
+        </tr>
+        <tr>
+
+            <td>Group Coordinator Application #</td>
+            <td>{{ hajj_application_item.group_coordinator_application_no }}</td>
+
+            <td>HGO #</td>
+            <td>{{ hajj_application_item.hgo_no }}</td>
+        </tr>
+        <tr>
+
+            <td>Stay Duration</td>
+            <td>{{ hajj_application_item.stay_duration }}</td>
+
+            <td>Substituted Against Application No</td>
+            <td>{{ hajj_application_item.substituted_against_application_no }}</td>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr>
+            <td>{{ hajj_application_item.name_of_applicant_as_per_passport.label_tag }}</td>
+            <td>{{ hajj_application_item.name_of_applicant_as_per_passport }}</td>
+
+            <td>{{ hajj_application_item.sur_name.label_tag }}</td>
+            <td>{{ hajj_application_item.sur_name }}</td>
+
+            <td>{{ hajj_application_item.given_name.label_tag }}</td>
+            <td>{{ hajj_application_item.given_name }}</td>
+
+            <td>{{ hajj_application_item.father_husband_name.label_tag }}</td>
+            <td>{{ hajj_application_item.father_husband_name }}</td>
+
+            <td>{{ hajj_application_item.passport_no.label_tag }}</td>
+            <td>{{ hajj_application_item.passport_no }}</td>
+
+            <td>{{ hajj_application_item.date_of_expiry.label_tag }}</td>
+            <td>{{ hajj_application_item.date_of_expiry }}</td>
+
+            <td>{{ hajj_application_item.date_of_birth.label_tag }}</td>
+            <td>{{ hajj_application_item.date_of_birth }}</td>
+        </tr>
+
+        <!-- Row 3 -->
+        <tr>
+            <td>{{ hajj_application_item.nadra_id_card_no.label_tag }}</td>
+            <td>{{ hajj_application_item.nadra_id_card_no }}</td>
+
+            <td>{{ hajj_application_item.blood_group.label_tag }}</td>
+            <td>{{ hajj_application_item.blood_group }}</td>
+
+            <td>{{ hajj_application_item.gender.label_tag }}</td>
+            <td>{{ hajj_application_item.gender }}</td>
+
+            <td>{{ hajj_application_item.fiqah.label_tag }}</td>
+            <td>{{ hajj_application_item.fiqah }}</td>
+
+            <td>{{ hajj_application_item.are_you_married.label_tag }}</td>
+            <td>{{ hajj_application_item.are_you_married }}</td>
+
+            <td>{{ hajj_application_item.present_postal_address.label_tag }}</td>
+            <td>{{ hajj_application_item.present_postal_address }}</td>
+
+            <td>{{ hajj_application_item.tehsil_code.label_tag }}</td>
+            <td>{{ hajj_application_item.tehsil_code }}</td>
+        </tr>
+
+        <!-- Row 4 -->
+        <tr>
+            <td>{{ hajj_application_item.mobile_no.label_tag }}</td>
+            <td>{{ hajj_application_item.mobile_no }}</td>
+
+            <td>{{ hajj_application_item.telephone_no.label_tag }}</td>
+            <td>{{ hajj_application_item.telephone_no }}</td>
+
+            <td>{{ hajj_application_item.performed_hajj_in_last_five_years.label_tag }}</td>
+            <td>{{ hajj_application_item.performed_hajj_in_last_five_years }}</td>
+
+            <td>{{ hajj_application_item.want_to_perform_hajj_e_badal.label_tag }}</td>
+            <td>{{ hajj_application_item.want_to_perform_hajj_e_badal }}</td>
+
+            <td>{{ hajj_application_item.want_to_perform_hajj_as_group_worker.label_tag }}</td>
+            <td>{{ hajj_application_item.want_to_perform_hajj_as_group_worker }}</td>
+
+            <td>{{ hajj_application_item.are_you_mehram_of_a_lady.label_tag }}</td>
+            <td>{{ hajj_application_item.are_you_mehram_of_a_lady }}</td>
+
+            <td>{{ hajj_application_item.cnic_no_of_lady.label_tag }}</td>
+            <td>{{ hajj_application_item.cnic_no_of_lady }}</td>
+        </tr>
+
+        <!-- Row 5 -->
+        <tr>
+            <td>{{ hajj_application_item.nominee_name.label_tag }}</td>
+            <td>{{ hajj_application_item.nominee_name }}</td>
+
+            <td>{{ hajj_application_item.relationship_with_nominee.label_tag }}</td>
+            <td>{{ hajj_application_item.relationship_with_nominee }}</td>
+
+            <td>{{ hajj_application_item.nominee_cnic_no.label_tag }}</td>
+            <td>{{ hajj_application_item.nominee_cnic_no }}</td>
+
+            <td>{{ hajj_application_item.nominee_mobile_no.label_tag }}</td>
+            <td>{{ hajj_application_item.nominee_mobile_no }}</td>
+
+            <td>{{ hajj_application_item.nominee_telephone_no.label_tag }}</td>
+            <td>{{ hajj_application_item.nominee_telephone_no }}</td>
+        </tr>
+
+        <!-- Row 6 -->
+        <tr>
+            <td>{{ hajj_application_item.emergency_name_of_person.label_tag }}</td>
+            <td>{{ hajj_application_item.emergency_name_of_person }}</td>
+
+            <td>{{ hajj_application_item.emergency_relationship.label_tag }}</td>
+            <td>{{ hajj_application_item.emergency_relationship }}</td>
+
+            <td>{{ hajj_application_item.emergency_cell_no.label_tag }}</td>
+            <td>{{ hajj_application_item.emergency_cell_no }}</td>
+        </tr>
+
+        <!-- Row 7 -->
+        <tr>
+            <td>{{ hajj_application_item.mehram_application_no.label_tag }}</td>
+            <td>{{ hajj_application_item.mehram_application_no }}</td>
+
+            <td>{{ hajj_application_item.mehram_code.label_tag }}</td>
+            <td>{{ hajj_application_item.mehram_code }}</td>
+
+            <td>{{ hajj_application_item.mehram_relationship.label_tag }}</td>
+            <td>{{ form.mehram_relationship }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="row actionButtons ">
+        <div class="float-right " style="margin-right: 50px;">
+            <button type="button" id="addClient" name="addClient" value="Cancel"
+                    class="button-red btn-sm"
+                    onClick="javascript:history.go(-1);"><i class="fa fa-chevron-left"
+                                                            aria-hidden="true"></i> back
+            </button>
+        </div>
+        <div class="float-right " style="margin-right: 10px;">
+            <button type="button" id="addClient" name="addClient" value="Cancel"
+                    class="button-blue btn-sm"
+                    onclick="javascript:window.location.href='/'"><i class="fa fa-home"
+                                                                     aria-hidden="true"></i> home
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{#page specific js files#}
+{#{% block page_js %}#}
+{#    <script src="{% static 'js/print/print.min.js' %}"></script>#}
+{#{% endblock %}#}
+
+{#page specific inline js#}
+{#{% block page_inline_js %}#}
+{#    <script>#}
+{##}
+{##}
+{#        $(document).on('click', '#print-btn', function () {#}
+{##}
+{##}
+{#            $("#barcode").printElement(#}
+{#                {#}
+{#                    leaveOpen: true,#}
+{#                    printMode: 'popup'#}
+{#                });#}
+{#        });#}
+{##}
+{#        $(document).on('click', '#generate_barcode', function () {#}
+{#            var prePopulate;#}
+{#            $.ajax({#}
+{#                type: 'POST',#}
+{#                url: "/barcodes/generate/",#}
+{#                data: {#}
+{#                    barcode: $('#id_barcode').val(),#}
+{#                    name: $('#id_name').val(),#}
+{#                    csrfmiddlewaretoken: '{{ csrf_token }}'#}
+{#                },#}
+{#                success: function (data) {#}
+{#                    prePopulate = $.parseJSON(data);#}
+{#                    html = '<img style="height:57px; width: 35%;" id="barcode_img" src="/media/product_images/' + prePopulate.company + '/barcodes/' + prePopulate.image + '.png"  alt="barcode"/><button type="button" class="btn btn-inline btn-secondary btn-sm" id="print-btn"><i class="fa fa-print"></i></button>';#}
+{#                    $('#barcode').html(html);#}
+{#                    $('#id_bar_image_path').val(prePopulate.bar_image_path)#}
+{##}
+{#                }#}
+{#            });#}
+{#            return false;#}
+{#        });#}
+{#        //barcodes end#}
+{##}
+{#        $("form").submit(function (event) {#}
+{#            alertify.success('Product updated!');#}
+{#        });#}
+{##}
+{#        $(document).ready(function () {#}
+{#            $(document).on("click", "#updateProduct", function () {#}
+{#                $('#updateproduct').submit();#}
+{#            });#}
+{##}
+{#            //select value on click#}
+{#            $(function () {#}
+{#                $(document).on('click', 'input[type=text], input[type=number]', function () {#}
+{#                    this.select();#}
+{#                });#}
+{#            });#}
+{##}
+{#            $(document).on('keyup', '#id_purchase_price', function () {#}
+{#                var purchase_price = $(this).val();#}
+{#                var percent = $('#id_margin').val() || 0;#}
+{#                var sale_price = parseFloat(purchase_price) + (parseFloat(purchase_price) * (parseFloat(percent) / 100));#}
+{#                $('#id_sale_price').val(parseFloat(sale_price).toFixed(3));#}
+{##}
+{#            });#}
+{##}
+{#            $(document).on('keyup', '#id_margin', function () {#}
+{#                var purchase_price = $('#id_purchase_price').val();#}
+{#                var percent = $(this).val();#}
+{#                var sale_price = parseFloat(purchase_price) + (parseFloat(purchase_price) * (parseFloat(percent) / 100));#}
+{#                $('#id_sale_price').val(parseFloat(sale_price).toFixed(3));#}
+{##}
+{#            });#}
+{##}
+{##}
+{#            $(document).on('keyup', '#id_sale_price', function () {#}
+{#                var purchase_price = $('#id_purchase_price').val();#}
+{#                var sale_price = $(this).val();#}
+{#                var percent = 100 * ((parseFloat(sale_price) - parseFloat(purchase_price)) / parseFloat(purchase_price));#}
+{#                $('#id_margin').val(parseFloat(percent).toFixed(3));#}
+{##}
+{#            });#}
+{##}
+{#preview image#}
+{##}
+{#            function preview_img(input) {#}
+{#                if (input.files && input.files[0]) {#}
+{#                    var reader = new FileReader();#}
+{##}
+{#                    reader.onload = function (e) {#}
+{#                        $('#product_image').attr('src', e.target.result);#}
+{#                    }#}
+{##}
+{#                    reader.readAsDataURL(input.files[0]);#}
+{#                }#}
+{#            }#}
+{##}
+{#            $('#id_image').on('change', function () {#}
+{#                preview_img(this);#}
+{#            });#}
+{##}
+{##}
+{#        sub category#}
+{#            $('#id_category').change(function () {#}
+{#                id = $(this).val();#}
+{#                request_url = '/products/get_subcats?id=' + id;#}
+{#                $.ajax({#}
+{#                    url: request_url,#}
+{#                    success: function (data) {#}
+{#                        var vals = '<option selected="selected" value="" disabled="disabled">Please select a sub-category</option>';#}
+{#                        prePopulate = $.parseJSON(data);#}
+{#                        $.each(prePopulate, function (key, value) {#}
+{#                            vals += '<option value="' + value.id + '">' + value.name + '</option>';#}
+{#                        });#}
+{#                        $('#id_subcategory').html(vals);#}
+{#                        $('#subcat').css('display', 'block');#}
+{#                    }#}
+{#                })#}
+{#            })#}
+{##}
+{#        });#}
+{#    </script>#}
+{#{% endblock %}#}
+
+
+

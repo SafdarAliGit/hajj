@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Tech Ventures{% endblock %}</title>
+  <!-- Add your common CSS stylesheets here -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+
+</head>
+<body>
+  <header>
+    <!-- Your header content here -->
+    <nav>
+      <!-- Your navigation menu here -->
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      {% block content %}
+      <!-- Content specific to each template will go here -->
+      {% endblock %}
+    </div>
+  </main>
+
+  <footer>
+    <!-- Your footer content here -->
+  </footer>
+
+  <!-- Add your common JavaScript files here -->
+{#  <script src="{% static 'js/script.js' %}"></script>#}
+</body>
+</html>

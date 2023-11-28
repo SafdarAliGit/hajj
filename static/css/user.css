@@ -1,0 +1,170 @@
+/* Add your custom styles here */
+body {
+  background-color: #f2f2f2;
+}
+form{
+  max-width: 380px;
+}
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],input[type="email"],input[type="checkbox"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* Button Styles */
+.button-blue {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4285F4; /* Bright Blue */
+  color: #ffffff;
+  border-radius: 4px;
+  border: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button-blue:hover {
+  background-color: #1A73E8; /* Darker Blue */
+}
+
+.button-blue:active {
+  background-color: #0D6AEF; /* Even Darker Blue */
+}
+
+
+/* Button Styles */
+/* Button Styles */
+.button-green {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #38b23d; /* Minimum 38b23d color */
+  color: #ffffff;
+  border-radius: 4px;
+  border: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button-green:hover {
+  background-color: #2e982f; /* Darker shade of minimum 38b23d color */
+}
+
+.button-green:active {
+  background-color: #257d26; /* Even darker shade of minimum 38b23d color */
+}
+
+
+/* Button Styles */
+.button-red {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #FF6565;
+  color: #ffffff;
+  border-radius: 4px;
+  border: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button-red:hover {
+  background-color: #FF4949;
+}
+
+.button-red:active {
+  background-color: #FF3333;
+}
+
+h2 {
+  text-align: center;
+}
+
+img {
+  border: 1px solid black; /* set a border around the image */
+  border-radius: 5px; /* apply rounded corners to the border */
+  padding: 8px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right:5px;
+}
+
+/* Global styles for all <p> tags */
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Specific styles for <p> tags with a class of "highlight" */
+p.highlight {
+  background-color: yellow;
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Media Query */
+@media screen and (max-width: 600px) {
+  /* Adjustments for <p> tags within the media query */
+  p {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  /* Additional styles for <p> tags with a class of "highlight" within the media query */
+  p.highlight {
+    background-color: lightyellow;
+  }
+}

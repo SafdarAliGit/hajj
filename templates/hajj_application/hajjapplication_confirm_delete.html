@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}Delete Application{% endblock %}</title>
+{% block content %}
+            <div class="heading-container">
+                <h5 class="heading">Delete Application</h5>
+            </div>
+            <div class="ro-outer">
+                <a href="{% url 'hajj_application:list' %}">
+                    <span class=" new_button button-green"> All Applications </span>
+                </a>
+                <span type="button" class="close_btn button-red" aria-hidden="true" onClick="javascript:history.go(-1);">X</span>
+            </div>
+            <div class="form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p style="color:red;">Are you sure you want to delete <span
+                                style="color:grey;">Hajj Application</span>?</p>
+                        {{ form }}
+                        <input type="submit" class=" button-red btn-sm" value="Confirm"/>
+                        <a href="{% url 'hajj_application:list' %}">
+                            <button type="button" class=" button-blue btn-sm">Cancel</button>
+                        </a>
+                    </form>
+            </div>
+
+            <div class="row actionButtons ">
+
+                 <div class="float-right " style="margin-right: 50px;">
+                        <button type="button" id="addClient" name="addClient" value="Cancel"
+                                class="button-red btn-sm"
+                                onClick="javascript:history.go(-1);"><i class="fa fa-chevron-left"
+                                                                        aria-hidden="true"></i> back
+                        </button>
+                    </div>
+                    <div class="float-right " style="margin-right: 10px;">
+                        <button type="button" id="addClient" name="addClient" value="Cancel"
+                                class="button-blue btn-sm"
+                                onclick="javascript:window.location.href='/'"><i class="fa fa-home"
+                                                                                 aria-hidden="true"></i> home
+                        </button>
+                    </div>
+            </div>
+{% endblock %}
+{% block page_inline_js %}
+    <script>
+
+    </script>
+{% endblock %}

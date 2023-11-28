@@ -1,0 +1,496 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!-- Mirrored from themesanytime.com/startui/demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Apr 2017 15:03:40 GMT -->
+
+<title>{% block title %}POS{% endblock %}</title>
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel.js"></script>
+    <div class="page-content">
+{#        <div class="container-fluid">#}
+{##}
+{#            <div class="row ">#}
+{#                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 home_box row" style="width: 45%; margin: 1%">#}
+{#                    <div class="home_box_heading">#}
+{#                        Sale Orders#}
+{#                    </div>#}
+{#                    <div class="home_box_data col-md-12">#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#F0AD4E;padding: 3px;font-weight: bolder;">Processing: {{ totsinvoices_processing| default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_processing.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#5BC0DE;padding: 3px;font-weight: bolder;">Dispatched: {{ totsinvoices_dispatched | default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_dispatched.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#D9534F;padding: 3px;font-weight: bolder;">Delivered : {{ totsinvoices_delivered | default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_delivered.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#5CB85C;padding: 3px;font-weight: bolder;">Finished  : {{ totsinvoices_finished| default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_finished.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div class="total_header">#}
+{#                            <pre style="color:#575757;padding: 3px;">Total  : {{ tot_inv_o | default_if_none:0 }} ({{ c.currency.symbol }}{{ tot_amt_o.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div class="total_header">#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div id="container2so" class="col-md-6">#}
+{#                                <script>#}
+{##}
+{#                                    Highcharts.chart('container2so', {#}
+{#                                        chart: {#}
+{#                                            type: 'column'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: 'SO financial statistics'#}
+{#                                        },#}
+{#                                        xAxis: {#}
+{#                                            categories: ['Processing', 'Dispatched', 'Delivered', 'Finished']#}
+{#                                        },#}
+{#                                        series: [#}
+{#                                            {#}
+{#                                                name: 'Processing',#}
+{#                                                data: [{{ totsamount_processing.totamount | default_if_none:0}}],#}
+{#                                                color: '#F0AD4E'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Dispatched',#}
+{#                                                data: [{{ totsamount_dispatched.totamount | default_if_none:0  }}],#}
+{#                                                color: '#5BC0DE'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Delivered',#}
+{#                                                data: [{{ totsamount_delivered.totamount | default_if_none:0}}],#}
+{#                                                color: '#D9534F'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Finished',#}
+{#                                                data: [{{ totsamount_finished.totamount | default_if_none:0}}],#}
+{#                                                color: '#5CB85C'#}
+{##}
+{#                                            }#}
+{#                                        ]#}
+{#                                    });#}
+{#                                </script>#}
+{#                            </div>#}
+{##}
+{#                            <div id="container1so" class="col-md-6">#}
+{#                                <script>#}
+{##}
+{#                                    Highcharts.chart('container1so', {#}
+{#                                        chart: {#}
+{#                                            type: 'column'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: 'SO statistics'#}
+{#                                        },#}
+{#                                        xAxis: {#}
+{#                                            categories: ['Processing', 'Dispatched', 'Delivered', 'Finished']#}
+{#                                        },#}
+{#                                        series: [#}
+{#                                            {#}
+{#                                                name: 'Processing',#}
+{#                                                data: [{{ totsinvoices_processing | default_if_none:0}}],#}
+{#                                                color: '#F0AD4E'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Dispatched',#}
+{#                                                data: [{{ totsinvoices_dispatched | default_if_none:0 }}],#}
+{#                                                color: '#5BC0DE'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Delivered',#}
+{#                                                data: [{{ totsinvoices_delivered | default_if_none:0}}],#}
+{#                                                color: '#D9534F'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Finished',#}
+{#                                                data: [{{ totsinvoices_finished | default_if_none:0 }}],#}
+{#                                                color: '#5CB85C'#}
+{##}
+{#                                            }#}
+{#                                        ]#}
+{#                                    });#}
+{#                                </script>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{##}
+{##}
+{#                </div><!--.col-->#}
+{#                {%  if request.user.role != 3 %}#}
+{#                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 home_box" style="width: 45%; margin: 1%">#}
+{#                    <div class="home_box_heading">Sale Invoices</div>#}
+{#                    <div class="home_box_data col-md-12">#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#F0AD4E;padding: 3px;font-weight: bolder;">Unpaid : {{ totsinvoices_unpaid| default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_unpaid.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#5CB85C;padding: 3px;font-weight: bolder;">Paid   : {{ totsinvoices_paid| default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_paid.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#5BC0DE;padding: 3px;font-weight: bolder;">Partial: {{ totsinvoices_partial| default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_partial.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div style="margin-bottom: 5px;">#}
+{#                            <pre style="color:#D9534F;padding: 3px;font-weight: bolder;">Overdue: {{ totsinvoices_overdue| default_if_none:0 }} ({{ c.currency.symbol }}{{ totsamount_overdue.totamount| default_if_none:0 }})  </pre>#}
+{#                        </div>#}
+{#                        <div class="total_header">#}
+{#                            <pre style="color:#575757;padding: 3px;">Total  : {{ tot_inv| default_if_none:0 }} ({{ c.currency.symbol }}{{ tot_amt.totamount| default_if_none:0 }}) </pre>#}
+{#                        </div>#}
+{#                        <div class="total_header">#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div id="container1s" class="col-md-6">#}
+{#                                <script>#}
+{##}
+{#                                    Highcharts.chart('container1s', {#}
+{#                                        chart: {#}
+{#                                            type: 'column'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: 'Sales financial statistics'#}
+{#                                        },#}
+{#                                        xAxis: {#}
+{#                                            categories: ['Unpaid', 'Paid', 'Partial', 'Overdue']#}
+{#                                        },#}
+{#                                        series: [#}
+{#                                            {#}
+{#                                                name: 'Unpaid',#}
+{#                                                data: [{{ totsamount_unpaid.totamount| default_if_none:0 }}],#}
+{#                                                color: '#F0AD4E'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Paid',#}
+{#                                                data: [{{ totsamount_paid.totamount| default_if_none:0 }}],#}
+{#                                                color: '#5CB85C'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Partial',#}
+{#                                                data: [{{  totsamount_partial.totamount| default_if_none:0 }}],#}
+{#                                                color: '#5BC0DE'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Overdue',#}
+{#                                                data: [{{  totsamount_overdue.totamount | default_if_none:0 }}],#}
+{#                                                color: '#D9534F'#}
+{##}
+{#                                            }#}
+{#                                        ]#}
+{#                                    });#}
+{#                                </script>#}
+{#                            </div>#}
+{#                            <div id="container2s" class="col-md-6">#}
+{#                                <script>#}
+{##}
+{#                                    Highcharts.chart('container2s', {#}
+{#                                        chart: {#}
+{#                                            type: 'column'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: 'Sales statistics'#}
+{#                                        },#}
+{#                                        xAxis: {#}
+{#                                            categories: ['Unpaid', 'Paid', 'Partial', 'Overdue']#}
+{#                                        },#}
+{#                                        series: [#}
+{#                                            {#}
+{#                                                name: 'Unpaid',#}
+{#                                                data: [{{ totsinvoices_unpaid | default_if_none:0}}],#}
+{#                                                color: '#F0AD4E'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Paid',#}
+{#                                                data: [{{ totsinvoices_paid | default_if_none:0}}],#}
+{#                                                color: '#5CB85C'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Partial',#}
+{#                                                data: [{{ totsinvoices_partial | default_if_none:0}}],#}
+{#                                                color: '#5BC0DE'#}
+{##}
+{#                                            },#}
+{#                                            {#}
+{#                                                name: 'Overdue',#}
+{#                                                data: [{{ totsinvoices_overdue | default_if_none:0}}],#}
+{#                                                color: '#D9534F'#}
+{##}
+{#                                            }#}
+{#                                        ]#}
+{#                                    });#}
+{#                                </script>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div><!--.col-->#}
+{#                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 home_box" style="width: 45%; margin: 1%">#}
+{#                    <div class="home_box_heading">Stock in Locations</div>#}
+{#                    <div class="home_box_data col-md-12">#}
+{##}
+{#                        <div class="row">#}
+{#                            <div id="container_stock" class="col-md-7">#}
+{#                                <script>#}
+{##}
+{#                                    // Make monochrome colors#}
+{#                                    var pieColors = (function () {#}
+{#                                        var colors = [],#}
+{#                                            base = Highcharts.getOptions().colors[0],#}
+{#                                            i;#}
+{##}
+{#                                        for (i = 0; i < 10; i += 1) {#}
+{#                                            // Start out with a darkened base color (negative brighten), and end#}
+{#                                            // up with a much brighter color#}
+{#                                            colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());#}
+{#                                        }#}
+{#                                        return colors;#}
+{#                                    }());#}
+{##}
+{#                                    // Build the chart#}
+{#                                    Highcharts.chart('container_stock', {#}
+{#                                        chart: {#}
+{#                                            plotBackgroundColor: null,#}
+{#                                            plotBorderWidth: null,#}
+{#                                            plotShadow: false,#}
+{#                                            type: 'pie'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: '% Stock present in different Locations (by products name)'#}
+{#                                        },#}
+{#                                        tooltip: {#}
+{#                                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'#}
+{#                                        },#}
+{#                                        plotOptions: {#}
+{#                                            pie: {#}
+{#                                                allowPointSelect: true,#}
+{#                                                cursor: 'pointer',#}
+{#                                                colors: pieColors,#}
+{#                                                dataLabels: {#}
+{#                                                    enabled: true,#}
+{#                                                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',#}
+{#                                                    distance: -50,#}
+{#                                                    filter: {#}
+{#                                                        property: 'percentage',#}
+{#                                                        operator: '>',#}
+{#                                                        value: 4#}
+{#                                                    }#}
+{#                                                }#}
+{#                                            }#}
+{#                                        },#}
+{#                                        series: [{#}
+{#                                            name: 'Stock At Location',#}
+{#                                            data: {{ stock_array|safe }}#}
+{#                                        }]#}
+{#                                    });#}
+{#                                </script>#}
+{##}
+{#                            </div>#}
+{#                            <div id="in_stock" class="col-md-5">#}
+{#                                <script>#}
+{##}
+{#                                    Highcharts.chart('in_stock', {#}
+{#                                        chart: {#}
+{#                                            type: 'pyramid'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: 'In stock & Out of stock Items',#}
+{#                                            x: -50#}
+{#                                        },#}
+{#                                        plotOptions: {#}
+{#                                            series: {#}
+{#                                                dataLabels: {#}
+{#                                                    enabled: true,#}
+{#                                                    format: '<b>{point.name}</b> ({point.y:,.0f})',#}
+{#                                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',#}
+{#                                                    softConnector: true#}
+{#                                                },#}
+{#                                                center: ['40%', '50%'],#}
+{#                                                width: '40%'#}
+{#                                            }#}
+{#                                        },#}
+{#                                        legend: {#}
+{#                                            enabled: false#}
+{#                                        },#}
+{#                                        series: [{#}
+{#                                            name: 'In & Out Stock',#}
+{#                                            data: [#}
+{#                                                ['In', {{ in_stock }}],#}
+{#                                                ['Out', {{ out_stock }}],#}
+{#                                            ]#}
+{#                                        }]#}
+{#                                    });#}
+{##}
+{#                                </script>#}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div><!--.col-->#}
+{#                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 home_box" style="width: 45%; margin: 1%">#}
+{#                    <div class="home_box_heading">Sale on Tills</div>#}
+{#                    <div class="home_box_data col-md-12">#}
+{##}
+{#                        <div class="row">#}
+{#                            <div id="till_sales" class="col-md-7">#}
+{#                                <script>#}
+{##}
+{#                                    // Make monochrome colors#}
+{#                                    var pieColors = (function () {#}
+{#                                        var colors = [],#}
+{#                                            base = Highcharts.getOptions().colors[0],#}
+{#                                            i;#}
+{##}
+{#                                        for (i = 0; i < 10; i += 1) {#}
+{#                                            // Start out with a darkened base color (negative brighten), and end#}
+{#                                            // up with a much brighter color#}
+{#                                            colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());#}
+{#                                        }#}
+{#                                        return colors;#}
+{#                                    }());#}
+{##}
+{#                                    // Build the chart#}
+{#                                    Highcharts.chart('till_sales', {#}
+{#                                        chart: {#}
+{#                                            plotBackgroundColor: null,#}
+{#                                            plotBorderWidth: null,#}
+{#                                            plotShadow: false,#}
+{#                                            type: 'pie'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: '% Sale by value at different Tills'#}
+{#                                        },#}
+{#                                        tooltip: {#}
+{#                                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'#}
+{#                                        },#}
+{#                                        plotOptions: {#}
+{#                                            pie: {#}
+{#                                                allowPointSelect: true,#}
+{#                                                cursor: 'pointer',#}
+{#                                                colors: pieColors,#}
+{#                                                dataLabels: {#}
+{#                                                    enabled: true,#}
+{#                                                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',#}
+{#                                                    distance: -50,#}
+{#                                                    filter: {#}
+{#                                                        property: 'percentage',#}
+{#                                                        operator: '>',#}
+{#                                                        value: 4#}
+{#                                                    }#}
+{#                                                }#}
+{#                                            }#}
+{#                                        },#}
+{#                                        series: [{#}
+{#                                            name: 'Sale At tills',#}
+{#                                            data: {{ sale_at_till_array|safe }}#}
+{#                                        }]#}
+{#                                    });#}
+{#                                </script>#}
+{##}
+{#                            </div>#}
+{##}
+{#                            <div id="till_sales_today" class="col-md-5">#}
+{#                                <script>#}
+{##}
+{#                                    // Make monochrome colors#}
+{#                                    var pieColors = (function () {#}
+{#                                        var colors = [],#}
+{#                                            base = Highcharts.getOptions().colors[0],#}
+{#                                            i;#}
+{##}
+{#                                        for (i = 0; i < 10; i += 1) {#}
+{#                                            // Start out with a darkened base color (negative brighten), and end#}
+{#                                            // up with a much brighter color#}
+{#                                            colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());#}
+{#                                        }#}
+{#                                        return colors;#}
+{#                                    }());#}
+{##}
+{#                                    // Build the chart#}
+{#                                    Highcharts.chart('till_sales_today', {#}
+{#                                        chart: {#}
+{#                                            plotBackgroundColor: null,#}
+{#                                            plotBorderWidth: null,#}
+{#                                            plotShadow: false,#}
+{#                                            type: 'pie'#}
+{#                                        },#}
+{#                                        title: {#}
+{#                                            text: '% Sale by value at different Tills(Current Day)'#}
+{#                                        },#}
+{#                                        tooltip: {#}
+{#                                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'#}
+{#                                        },#}
+{#                                        plotOptions: {#}
+{#                                            pie: {#}
+{#                                                allowPointSelect: true,#}
+{#                                                cursor: 'pointer',#}
+{#                                                colors: pieColors,#}
+{#                                                dataLabels: {#}
+{#                                                    enabled: true,#}
+{#                                                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',#}
+{#                                                    distance: -50,#}
+{#                                                    filter: {#}
+{#                                                        property: 'percentage',#}
+{#                                                        operator: '>',#}
+{#                                                        value: 4#}
+{#                                                    }#}
+{#                                                }#}
+{#                                            }#}
+{#                                        },#}
+{#                                        series: [{#}
+{#                                            name: 'Today Sale At till',#}
+{#                                            data: {{ sale_at_till_array_current|safe }}#}
+{#                                        }]#}
+{#                                    });#}
+{#                                </script>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div><!--.col-->#}
+{#                {% endif %}#}
+{#            </div>#}
+{##}
+{#        </div><!--.container-fluid-->#}
+    </div><!--.page-content-->
+
+{% endblock %}
+
+{#control_panel#}
+
+{#js files section#}
+{#page specific inline js#}
+{% block page_inline_js %}
+    <script>
+        $(document).ready(function () {
+            $(".highcharts-credits").text('');
+            $(".highcharts-background").css('fill', '#ECEFF4');
+        });
+    </script>
+{% endblock %}
+
+<script src="{% static 'js/app.js' %}"></script>
+
+
+<!-- Mirrored from themesanytime.com/startui/demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Apr 2017 15:04:28 GMT -->
+</html>

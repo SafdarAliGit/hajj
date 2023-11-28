@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}Add Application{% endblock %}</title>
+{% block content %}
+    <div class="heading-container">
+        <h5 class="heading">Add Application</h5>
+    </div>
+    <div class="ro-outer">
+        <a href="{% url 'hajj_application:list' %}">
+            <span class=" new_button button-green "> All Applications</span>
+        </a>
+        <span type="button" class="close_btn button-red" aria-hidden="true"
+              onClick="javascript:history.go(-1);">X</span>
+    </div>
+    <div class="form-container">
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group input_padding_right_10px">
+                                        <span class="field_error"> {{ form.photo.errors }}</span>
+                                        {{ form.photo.label_tag }}
+                                        {{ form.photo }}
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="photo">
+                                        <img id="preview-image" src="#" alt="Preview Image" class="img-fluid"
+                                             width="150" height="180">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group input_padding_right_10px">
+                                <span class="field_error"> {{ form.hajj_application_no.errors }}</span>
+                                {{ form.hajj_application_no.label_tag }}
+                                {{ form.hajj_application_no }}
+                            </div>
+                            <div class="form-group input_padding_right_10px">
+                                {{ form.group_coordinator_application_no.errors }}
+                                {{ form.group_coordinator_application_no.label_tag }}
+                                {{ form.group_coordinator_application_no }}
+                            </div>
+                            <div class="form-group input_padding_right_10px">
+                                {{ form.stay_duration.errors }}
+                                {{ form.stay_duration.label_tag }}
+                                {{ form.stay_duration }}
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group input_padding_right_10px">
+                                {{ form.enrollment_no.errors }}
+                                {{ form.enrollment_no.label_tag }}
+                                {{ form.enrollment_no }}
+                            </div>
+                            <div class="form-group input_padding_right_10px">
+                                {{ form.hgo_no.errors }}
+                                {{ form.hgo_no.label_tag }}
+                                {{ form.hgo_no }}
+                            </div>
+                            <div class="form-group input_padding_right_10px">
+                                {{ form.substituted_against_application_no.errors }}
+                                {{ form.substituted_against_application_no.label_tag }}
+                                {{ form.substituted_against_application_no }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <fieldset>
+                            <legend>APPLICANT</legend>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.name_of_applicant_as_per_passport.errors }}
+                                    {{ form.name_of_applicant_as_per_passport.label_tag }}
+                                    {{ form.name_of_applicant_as_per_passport }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.sur_name.errors }}
+                                    {{ form.sur_name.label_tag }}
+                                    {{ form.sur_name }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.given_name.errors }}
+                                    {{ form.given_name.label_tag }}
+                                    {{ form.given_name }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.father_husband_name.errors }}
+                                    {{ form.father_husband_name.label_tag }}
+                                    {{ form.father_husband_name }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.passport_no.errors }}
+                                    {{ form.passport_no.label_tag }}
+                                    {{ form.passport_no }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.date_of_expiry.errors }}
+                                    {{ form.date_of_expiry.label_tag }}
+                                    {{ form.date_of_expiry }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.date_of_birth.errors }}
+                                    {{ form.date_of_birth.label_tag }}
+                                    {{ form.date_of_birth }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.nadra_id_card_no.errors }}
+                                    {{ form.nadra_id_card_no.label_tag }}
+                                    {{ form.nadra_id_card_no }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.blood_group.errors }}
+                                    {{ form.blood_group.label_tag }}
+                                    {{ form.blood_group }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.gender.errors }}
+                                    {{ form.gender.label_tag }}
+                                    {{ form.gender }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.fiqah.errors }}
+                                    {{ form.fiqah.label_tag }}
+                                    {{ form.fiqah }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.are_you_married.errors }}
+                                    {{ form.are_you_married.label_tag }}
+                                    {{ form.are_you_married }}
+                                </div>
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.present_postal_address.errors }}
+                                    {{ form.present_postal_address.label_tag }}
+                                    {{ form.present_postal_address }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.tehsil_code.errors }}
+                                    {{ form.tehsil_code.label_tag }}
+                                    {{ form.tehsil_code }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.mobile_no.errors }}
+                                    {{ form.mobile_no.label_tag }}
+                                    {{ form.mobile_no }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.telephone_no.errors }}
+                                    {{ form.telephone_no.label_tag }}
+                                    {{ form.telephone_no }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.performed_hajj_in_last_five_years.errors }}
+                                    {{ form.performed_hajj_in_last_five_years.label_tag }}
+                                    {{ form.performed_hajj_in_last_five_years }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.want_to_perform_hajj_e_badal.errors }}
+                                    {{ form.want_to_perform_hajj_e_badal.label_tag }}
+                                    {{ form.want_to_perform_hajj_e_badal }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.want_to_perform_hajj_as_group_worker.errors }}
+                                    {{ form.want_to_perform_hajj_as_group_worker.label_tag }}
+                                    {{ form.want_to_perform_hajj_as_group_worker }}
+                                </div>
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.are_you_mehram_of_a_lady.errors }}
+                                    {{ form.are_you_mehram_of_a_lady.label_tag }}
+                                    {{ form.are_you_mehram_of_a_lady }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.are_you_mehram.errors }}
+                                    {{ form.are_you_mehram.label_tag }}
+                                    {{ form.are_you_mehram }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.cnic_no_of_lady.errors }}
+                                    {{ form.cnic_no_of_lady.label_tag }}
+                                    {{ form.cnic_no_of_lady }}
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <fieldset>
+                            <legend>NOMINEE IN CASE OF DEATH</legend>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.nominee_name.errors }}
+                                    {{ form.nominee_name.label_tag }}
+                                    {{ form.nominee_name }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.relationship_with_nominee.errors }}
+                                    {{ form.relationship_with_nominee.label_tag }}
+                                    {{ form.relationship_with_nominee }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.nominee_cnic_no.errors }}
+                                    {{ form.nominee_cnic_no.label_tag }}
+                                    {{ form.nominee_cnic_no }}
+                                </div>
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.nominee_mobile_no.errors }}
+                                    {{ form.nominee_mobile_no.label_tag }}
+                                    {{ form.nominee_mobile_no }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.nominee_telephone_no.errors }}
+                                    {{ form.nominee_telephone_no.label_tag }}
+                                    {{ form.nominee_telephone_no }}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <fieldset>
+                            <legend>EMERGENCY CONTACT NO IN PAKISTAN</legend>
+
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.emergency_name_of_person.errors }}
+                                    {{ form.emergency_name_of_person.label_tag }}
+                                    {{ form.emergency_name_of_person }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.emergency_relationship.errors }}
+                                    {{ form.emergency_relationship.label_tag }}
+                                    {{ form.emergency_relationship }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.emergency_cell_no.errors }}
+                                    {{ form.emergency_cell_no.label_tag }}
+                                    {{ form.emergency_cell_no }}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <fieldset>
+                            <legend>MEHRAM DETAIL</legend>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.mehram_application_no.errors }}
+                                    {{ form.mehram_application_no.label_tag }}
+                                    {{ form.mehram_application_no }}
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.mehram_code.errors }}
+                                    {{ form.mehram_code.label_tag }}
+                                    {{ form.mehram_code }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+
+                                <div class="form-group input_padding_right_10px">
+                                    {{ form.mehram_relationship.errors }}
+                                    {{ form.mehram_relationship.label_tag }}
+                                    {{ form.mehram_relationship }}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row actionButtons ">
+                <div class="float-right" style="margin-right: 50px;">
+                    <button type="submit" id="addClient" name="addClient" value="Save"
+                            class="button-green btn-sm"><i class="fa fa-floppy-o"
+                                                           aria-hidden="true"></i> save
+                    </button>
+                </div>
+                <div class="float-right " style="margin-right: 10px;">
+                    <button type="button" id="addClient" name="addClient" value="Cancel"
+                            class="button-red btn-sm"
+                            onClick="javascript:history.go(-1);"><i class="fa fa-chevron-left"
+                                                                    aria-hidden="true"></i> back
+                    </button>
+                </div>
+                <div class="float-right " style="margin-right: 10px;">
+                    <button type="button" id="addClient" name="addClient" value="Cancel"
+                            class="button-blue btn-sm"
+                            onclick="javascript:window.location.href='/'"><i class="fa fa-home"
+                                                                             aria-hidden="true"></i> home
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block page_inline_js %}
+    <script>
+        document.getElementById('id_photo').addEventListener('change', function (event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function () {
+                var img = document.getElementById('preview-image');
+                img.src = reader.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        });
+        // $(document).ready(function () {
+        // choosen
+        //   $("#id_item_group").chosen({search_contains: true, no_results_text: "Oops, nothing found!", width: "100%"});
+        //});
+
+    </script>
+{% endblock %}
+
+
+

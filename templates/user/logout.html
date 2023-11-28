@@ -1,0 +1,13 @@
+{% extends "user_base.html" %}
+{% block title %}Logout{% endblock title %}
+{% block content %}
+
+        <h4>You have been logged out</h4>
+    <div class="form-group">
+     <a class="button-blue" href="{% url 'login' %}" >Login</a>
+    <a class="button-green" href="{% url 'register' %}" >Register</a>
+    </div>
+
+
+
+{% endblock content %}
