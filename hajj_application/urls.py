@@ -1,7 +1,7 @@
 from django.urls import path
 
 from hajj_application.views import CreateHajjApplication, ListHajjApplication, UpdateHajjApplication, \
-    DeleteHajjApplication, DetailHajjApplication
+    DeleteHajjApplication, DetailHajjApplication, GetPackage
 
 app_name = 'hajj_application'
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('update/<int:pk>', UpdateHajjApplication.as_view(), name='update'),
     path('delete/<int:pk>', DeleteHajjApplication.as_view(), name='delete'),
     path('detail/<int:pk>', DetailHajjApplication.as_view(), name='detail'),
+    path('get_package', GetPackage.as_view(), name='get_package'),
 ]

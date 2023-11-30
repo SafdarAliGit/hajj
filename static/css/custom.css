@@ -77,11 +77,12 @@ input[type="search"] {
 
 .actionButtons {
     position: fixed;
-    bottom: 8px;
+    bottom: 0px;
+    padding-top: 5px;
     left: 0;
     right: 0;
     height: 50px;
-    padding: 10px;
+    /*padding: 10px;*/
     z-index: 100000;
     border-top: solid 2px rgb(159, 162, 167);
     background-color: rgb(236, 239, 244);
@@ -103,10 +104,10 @@ form {
     padding-top: 3px;
     border-bottom: solid 2px rgb(159, 162, 167);
     position: fixed;
-    top: 41px;
+    top: 30px;
     left: 0;
     right: 0;
-    height: 43px;
+    height: 50px;
     text-align: center;
     font-weight: bold;
     color: #1e1c1c;
@@ -117,7 +118,7 @@ form {
 .heading-container {
     position: relative;
     z-index: 3;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .ro-outer {
@@ -127,14 +128,14 @@ form {
 
 .new_button {
     position: fixed;
-    top: 50px;
+    top: 47px;
     left: 83.5%;
     right: 6.5%;
     }
 
 .close_btn {
     position: fixed;
-    top: 50px;
+    top: 47px;
     left: 94%;
     right: 4%;
 }
@@ -312,7 +313,7 @@ pre {
 .form-container {
     max-width: 100%;
      margin: 50px auto;
-    padding: 40px;
+    padding: 10px 20px 20px 20px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgb(84, 82, 82);
 }
@@ -478,3 +479,53 @@ legend{
   color: #fff; /* Set text color to white or another contrasting color */
   padding: 10px; /* Adjust padding as needed */
 }
+
+/*for form tabs*/
+.form-tabs {
+    /*overflow: hidden;*/
+    /*border: 1px solid #ccc;*/
+    /*background-color: #f1f1f1;*/
+}
+
+.tab {
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: background-color 0.3s;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    /*border-top: 2px solid #ccc;*/
+}
+
+/* Style for the tab group container */
+.tab_group {
+    display: flex;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+}
+
+/* Style for each tab */
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    /*border: 2px solid transparent;*/
+    /*border-bottom: none;*/
+    /*background-color: #f0f0f0;*/
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Style for the active tab */
+.tab.active {
+    background-color: #38b23d;
+    color: #fff;
+}
+
+/* Hover effect for tabs */
+.tab:hover {
+    background-color: #5cd261;
+    color: #fff;
+}
+

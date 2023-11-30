@@ -47,9 +47,5 @@ class PackageAdmin(admin.ModelAdmin):
     exclude = ('country_name','country_code',)
 
 
-
-
-
-
 admin.site.register(Hotel, HotelAdmin)
 admin.site.register(Package, PackageAdmin)

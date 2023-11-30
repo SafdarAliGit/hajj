@@ -13,335 +13,372 @@
               onClick="javascript:history.go(-1);">X</span>
     </div>
     <div class="form-container">
-        <form method="post" class="form-horizontal">
-            {% csrf_token %}
-            <div class="row">
-                <div class="col-md-12">
+        <div class="form-tabs">
+            <div class="tab_group">
+                <div style="font-weight: bold;" class="tab" onclick="openTab(event, 'tab1')">Hajj Application</div>
+                <div style="font-weight: bold;" class="tab" onclick="openTab(event, 'tab2')">Package Information</div>
+            </div>
+
+            <!-- Add more tabs as needed -->
+            <div id="tab1" class="tab-content">
+                <form method="post" class="form-horizontal">
+
+                    {% csrf_token %}
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group input_padding_right_10px">
+                                                <span class="field_error"> {{ form.photo.errors }}</span>
+                                                {{ form.photo.label_tag }}
+                                                {{ form.photo }}
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="photo">
+                                                <img id="preview-image" src="#" alt="Preview Image" class="img-fluid"
+                                                     width="150" height="180">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group input_padding_right_10px">
-                                        <span class="field_error"> {{ form.photo.errors }}</span>
-                                        {{ form.photo.label_tag }}
-                                        {{ form.photo }}
+                                        <span class="field_error"> {{ form.hajj_application_no.errors }}</span>
+                                        {{ form.hajj_application_no.label_tag }}
+                                        {{ form.hajj_application_no }}
+                                    </div>
+                                    <div class="form-group input_padding_right_10px">
+                                        {{ form.group_coordinator_application_no.errors }}
+                                        {{ form.group_coordinator_application_no.label_tag }}
+                                        {{ form.group_coordinator_application_no }}
+                                    </div>
+                                    <div class="form-group input_padding_right_10px">
+                                        {{ form.stay_duration.errors }}
+                                        {{ form.stay_duration.label_tag }}
+                                        {{ form.stay_duration }}
+                                    </div>
 
-
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group input_padding_right_10px">
+                                        {{ form.enrollment_no.errors }}
+                                        {{ form.enrollment_no.label_tag }}
+                                        {{ form.enrollment_no }}
+                                    </div>
+                                    <div class="form-group input_padding_right_10px">
+                                        {{ form.hgo_no.errors }}
+                                        {{ form.hgo_no.label_tag }}
+                                        {{ form.hgo_no }}
+                                    </div>
+                                    <div class="form-group input_padding_right_10px">
+                                        {{ form.substituted_against_application_no.errors }}
+                                        {{ form.substituted_against_application_no.label_tag }}
+                                        {{ form.substituted_against_application_no }}
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="photo">
-                                        <img id="preview-image" src="#" alt="Preview Image" class="img-fluid"
-                                             width="150" height="180">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <fieldset>
+                                    <legend>APPLICANT</legend>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.name_of_applicant_as_per_passport.errors }}
+                                            {{ form.name_of_applicant_as_per_passport.label_tag }}
+                                            {{ form.name_of_applicant_as_per_passport }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.sur_name.errors }}
+                                            {{ form.sur_name.label_tag }}
+                                            {{ form.sur_name }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.given_name.errors }}
+                                            {{ form.given_name.label_tag }}
+                                            {{ form.given_name }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.father_husband_name.errors }}
+                                            {{ form.father_husband_name.label_tag }}
+                                            {{ form.father_husband_name }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.passport_no.errors }}
+                                            {{ form.passport_no.label_tag }}
+                                            {{ form.passport_no }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.date_of_expiry.errors }}
+                                            {{ form.date_of_expiry.label_tag }}
+                                            {{ form.date_of_expiry }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.date_of_birth.errors }}
+                                            {{ form.date_of_birth.label_tag }}
+                                            {{ form.date_of_birth }}
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.nadra_id_card_no.errors }}
+                                            {{ form.nadra_id_card_no.label_tag }}
+                                            {{ form.nadra_id_card_no }}
+                                        </div>
 
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.blood_group.errors }}
+                                            {{ form.blood_group.label_tag }}
+                                            {{ form.blood_group }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.gender.errors }}
+                                            {{ form.gender.label_tag }}
+                                            {{ form.gender }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.fiqah.errors }}
+                                            {{ form.fiqah.label_tag }}
+                                            {{ form.fiqah }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.are_you_married.errors }}
+                                            {{ form.are_you_married.label_tag }}
+                                            {{ form.are_you_married }}
+                                        </div>
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.present_postal_address.errors }}
+                                            {{ form.present_postal_address.label_tag }}
+                                            {{ form.present_postal_address }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.tehsil_code.errors }}
+                                            {{ form.tehsil_code.label_tag }}
+                                            {{ form.tehsil_code }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.mobile_no.errors }}
+                                            {{ form.mobile_no.label_tag }}
+                                            {{ form.mobile_no }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.telephone_no.errors }}
+                                            {{ form.telephone_no.label_tag }}
+                                            {{ form.telephone_no }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.performed_hajj_in_last_five_years.errors }}
+                                            {{ form.performed_hajj_in_last_five_years.label_tag }}
+                                            {{ form.performed_hajj_in_last_five_years }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.want_to_perform_hajj_e_badal.errors }}
+                                            {{ form.want_to_perform_hajj_e_badal.label_tag }}
+                                            {{ form.want_to_perform_hajj_e_badal }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.want_to_perform_hajj_as_group_worker.errors }}
+                                            {{ form.want_to_perform_hajj_as_group_worker.label_tag }}
+                                            {{ form.want_to_perform_hajj_as_group_worker }}
+                                        </div>
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.are_you_mehram_of_a_lady.errors }}
+                                            {{ form.are_you_mehram_of_a_lady.label_tag }}
+                                            {{ form.are_you_mehram_of_a_lady }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.are_you_mehram.errors }}
+                                            {{ form.are_you_mehram.label_tag }}
+                                            {{ form.are_you_mehram }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.cnic_no_of_lady.errors }}
+                                            {{ form.cnic_no_of_lady.label_tag }}
+                                            {{ form.cnic_no_of_lady }}
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group input_padding_right_10px">
-                                <span class="field_error"> {{ form.hajj_application_no.errors }}</span>
-                                {{ form.hajj_application_no.label_tag }}
-                                {{ form.hajj_application_no }}
-                            </div>
-                            <div class="form-group input_padding_right_10px">
-                                {{ form.group_coordinator_application_no.errors }}
-                                {{ form.group_coordinator_application_no.label_tag }}
-                                {{ form.group_coordinator_application_no }}
-                            </div>
-                            <div class="form-group input_padding_right_10px">
-                                {{ form.stay_duration.errors }}
-                                {{ form.stay_duration.label_tag }}
-                                {{ form.stay_duration }}
-                            </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <fieldset>
+                                    <legend>NOMINEE IN CASE OF DEATH</legend>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.nominee_name.errors }}
+                                            {{ form.nominee_name.label_tag }}
+                                            {{ form.nominee_name }}
+                                        </div>
 
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.relationship_with_nominee.errors }}
+                                            {{ form.relationship_with_nominee.label_tag }}
+                                            {{ form.relationship_with_nominee }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.nominee_cnic_no.errors }}
+                                            {{ form.nominee_cnic_no.label_tag }}
+                                            {{ form.nominee_cnic_no }}
+                                        </div>
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.nominee_mobile_no.errors }}
+                                            {{ form.nominee_mobile_no.label_tag }}
+                                            {{ form.nominee_mobile_no }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.nominee_telephone_no.errors }}
+                                            {{ form.nominee_telephone_no.label_tag }}
+                                            {{ form.nominee_telephone_no }}
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group input_padding_right_10px">
-                                {{ form.enrollment_no.errors }}
-                                {{ form.enrollment_no.label_tag }}
-                                {{ form.enrollment_no }}
-                            </div>
-                            <div class="form-group input_padding_right_10px">
-                                {{ form.hgo_no.errors }}
-                                {{ form.hgo_no.label_tag }}
-                                {{ form.hgo_no }}
-                            </div>
-                            <div class="form-group input_padding_right_10px">
-                                {{ form.substituted_against_application_no.errors }}
-                                {{ form.substituted_against_application_no.label_tag }}
-                                {{ form.substituted_against_application_no }}
+                        <div class="col-md-12">
+                            <div class="row">
+                                <fieldset>
+                                    <legend>EMERGENCY CONTACT NO IN PAKISTAN</legend>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.emergency_name_of_person.errors }}
+                                            {{ form.emergency_name_of_person.label_tag }}
+                                            {{ form.emergency_name_of_person }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.emergency_relationship.errors }}
+                                            {{ form.emergency_relationship.label_tag }}
+                                            {{ form.emergency_relationship }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.emergency_cell_no.errors }}
+                                            {{ form.emergency_cell_no.label_tag }}
+                                            {{ form.emergency_cell_no }}
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <fieldset>
+                                    <legend>MEHRAM DETAIL</legend>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.mehram_application_no.errors }}
+                                            {{ form.mehram_application_no.label_tag }}
+                                            {{ form.mehram_application_no }}
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.mehram_code.errors }}
+                                            {{ form.mehram_code.label_tag }}
+                                            {{ form.mehram_code }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.mehram_relationship.errors }}
+                                            {{ form.mehram_relationship.label_tag }}
+                                            {{ form.mehram_relationship }}
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <fieldset>
+                                    <legend>PACKAGE DETAIL</legend>
+                                    <div class="col-md-4">
+                                        <div class="form-group input_padding_right_10px">
+                                            {{ form.package.errors }}
+                                            {{ form.package.label_tag }}
+                                            {{ form.package }}
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="row">
-                        <fieldset>
-                            <legend>APPLICANT</legend>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.name_of_applicant_as_per_passport.errors }}
-                                    {{ form.name_of_applicant_as_per_passport.label_tag }}
-                                    {{ form.name_of_applicant_as_per_passport }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.sur_name.errors }}
-                                    {{ form.sur_name.label_tag }}
-                                    {{ form.sur_name }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.given_name.errors }}
-                                    {{ form.given_name.label_tag }}
-                                    {{ form.given_name }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.father_husband_name.errors }}
-                                    {{ form.father_husband_name.label_tag }}
-                                    {{ form.father_husband_name }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.passport_no.errors }}
-                                    {{ form.passport_no.label_tag }}
-                                    {{ form.passport_no }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.date_of_expiry.errors }}
-                                    {{ form.date_of_expiry.label_tag }}
-                                    {{ form.date_of_expiry }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.date_of_birth.errors }}
-                                    {{ form.date_of_birth.label_tag }}
-                                    {{ form.date_of_birth }}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.nadra_id_card_no.errors }}
-                                    {{ form.nadra_id_card_no.label_tag }}
-                                    {{ form.nadra_id_card_no }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.blood_group.errors }}
-                                    {{ form.blood_group.label_tag }}
-                                    {{ form.blood_group }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.gender.errors }}
-                                    {{ form.gender.label_tag }}
-                                    {{ form.gender }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.fiqah.errors }}
-                                    {{ form.fiqah.label_tag }}
-                                    {{ form.fiqah }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.are_you_married.errors }}
-                                    {{ form.are_you_married.label_tag }}
-                                    {{ form.are_you_married }}
-                                </div>
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.present_postal_address.errors }}
-                                    {{ form.present_postal_address.label_tag }}
-                                    {{ form.present_postal_address }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.tehsil_code.errors }}
-                                    {{ form.tehsil_code.label_tag }}
-                                    {{ form.tehsil_code }}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.mobile_no.errors }}
-                                    {{ form.mobile_no.label_tag }}
-                                    {{ form.mobile_no }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.telephone_no.errors }}
-                                    {{ form.telephone_no.label_tag }}
-                                    {{ form.telephone_no }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.performed_hajj_in_last_five_years.errors }}
-                                    {{ form.performed_hajj_in_last_five_years.label_tag }}
-                                    {{ form.performed_hajj_in_last_five_years }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.want_to_perform_hajj_e_badal.errors }}
-                                    {{ form.want_to_perform_hajj_e_badal.label_tag }}
-                                    {{ form.want_to_perform_hajj_e_badal }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.want_to_perform_hajj_as_group_worker.errors }}
-                                    {{ form.want_to_perform_hajj_as_group_worker.label_tag }}
-                                    {{ form.want_to_perform_hajj_as_group_worker }}
-                                </div>
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.are_you_mehram_of_a_lady.errors }}
-                                    {{ form.are_you_mehram_of_a_lady.label_tag }}
-                                    {{ form.are_you_mehram_of_a_lady }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.are_you_mehram.errors }}
-                                    {{ form.are_you_mehram.label_tag }}
-                                    {{ form.are_you_mehram }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.cnic_no_of_lady.errors }}
-                                    {{ form.cnic_no_of_lady.label_tag }}
-                                    {{ form.cnic_no_of_lady }}
-                                </div>
-                            </div>
-
-                        </fieldset>
+                    <div class="row actionButtons ">
+                        <div class="float-right" style="margin-right: 50px;">
+                            <button type="submit" id="addClient" name="addClient" value="Save"
+                                    class="button-green btn-sm"><i class="fa fa-floppy-o"
+                                                                   aria-hidden="true"></i> save
+                            </button>
+                        </div>
+                        <div class="float-right " style="margin-right: 10px;">
+                            <button type="button" id="addClient" name="addClient" value="Cancel"
+                                    class="button-red btn-sm"
+                                    onClick="javascript:history.go(-1);"><i class="fa fa-chevron-left"
+                                                                            aria-hidden="true"></i> back
+                            </button>
+                        </div>
+                        <div class="float-right " style="margin-right: 10px;">
+                            <button type="button" id="addClient" name="addClient" value="Cancel"
+                                    class="button-blue btn-sm"
+                                    onclick="javascript:window.location.href='/'"><i class="fa fa-home"
+                                                                                     aria-hidden="true"></i> home
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <fieldset>
-                            <legend>NOMINEE IN CASE OF DEATH</legend>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.nominee_name.errors }}
-                                    {{ form.nominee_name.label_tag }}
-                                    {{ form.nominee_name }}
-                                </div>
 
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.relationship_with_nominee.errors }}
-                                    {{ form.relationship_with_nominee.label_tag }}
-                                    {{ form.relationship_with_nominee }}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.nominee_cnic_no.errors }}
-                                    {{ form.nominee_cnic_no.label_tag }}
-                                    {{ form.nominee_cnic_no }}
-                                </div>
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.nominee_mobile_no.errors }}
-                                    {{ form.nominee_mobile_no.label_tag }}
-                                    {{ form.nominee_mobile_no }}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.nominee_telephone_no.errors }}
-                                    {{ form.nominee_telephone_no.label_tag }}
-                                    {{ form.nominee_telephone_no }}
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <fieldset>
-                            <legend>EMERGENCY CONTACT NO IN PAKISTAN</legend>
-
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.emergency_name_of_person.errors }}
-                                    {{ form.emergency_name_of_person.label_tag }}
-                                    {{ form.emergency_name_of_person }}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.emergency_relationship.errors }}
-                                    {{ form.emergency_relationship.label_tag }}
-                                    {{ form.emergency_relationship }}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.emergency_cell_no.errors }}
-                                    {{ form.emergency_cell_no.label_tag }}
-                                    {{ form.emergency_cell_no }}
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <fieldset>
-                            <legend>MEHRAM DETAIL</legend>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.mehram_application_no.errors }}
-                                    {{ form.mehram_application_no.label_tag }}
-                                    {{ form.mehram_application_no }}
-                                </div>
-
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.mehram_code.errors }}
-                                    {{ form.mehram_code.label_tag }}
-                                    {{ form.mehram_code }}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-
-                                <div class="form-group input_padding_right_10px">
-                                    {{ form.mehram_relationship.errors }}
-                                    {{ form.mehram_relationship.label_tag }}
-                                    {{ form.mehram_relationship }}
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
+                </form>
+            </div>
+            <div id="tab2" class="tab-content">
+                <div id="package_master"></div>
+                <div id="package_hotel"></div>
 
             </div>
-            <div class="row actionButtons ">
-                <div class="float-right" style="margin-right: 50px;">
-                    <button type="submit" id="addClient" name="addClient" value="Save"
-                            class="button-green btn-sm"><i class="fa fa-floppy-o"
-                                                           aria-hidden="true"></i> save
-                    </button>
-                </div>
-                <div class="float-right " style="margin-right: 10px;">
-                    <button type="button" id="addClient" name="addClient" value="Cancel"
-                            class="button-red btn-sm"
-                            onClick="javascript:history.go(-1);"><i class="fa fa-chevron-left"
-                                                                    aria-hidden="true"></i> back
-                    </button>
-                </div>
-                <div class="float-right " style="margin-right: 10px;">
-                    <button type="button" id="addClient" name="addClient" value="Cancel"
-                            class="button-blue btn-sm"
-                            onclick="javascript:window.location.href='/'"><i class="fa fa-home"
-                                                                             aria-hidden="true"></i> home
-                    </button>
-                </div>
-            </div>
 
-        </form>
+        </div>
+
 
     </div>
 
@@ -349,6 +386,7 @@
 
 {% block page_inline_js %}
     <script>
+
         document.getElementById('id_photo').addEventListener('change', function (event) {
             var input = event.target;
             var reader = new FileReader();
@@ -358,10 +396,131 @@
             };
             reader.readAsDataURL(input.files[0]);
         });
-        // $(document).ready(function () {
-        // choosen
-        //   $("#id_item_group").chosen({search_contains: true, no_results_text: "Oops, nothing found!", width: "100%"});
-        //});
+
+        //tabs
+
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabContent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+
+            // Remove "active" class from all tabs
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+
+            // Show the clicked tab content and mark the tab as active
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.classList.add("active");
+        }
+
+        $(document).ready(function () {
+            // Open the default tab on page load
+            document.getElementById("tab1").style.display = "block";
+            document.querySelector(".tab").classList.add("active");
+
+            //end tabs
+
+            //fetch package
+            $(document).on("change", "#id_package", function () {
+                var package_id = $(this).val();
+
+                if (package_id) {
+                    $.ajax({
+                        url: `/hajj_application/get_package?package_id=${package_id}`,
+                        type: 'GET',
+                        success: function (data) {
+                            if (data.success && data.package) {
+                                var master_ui = `
+                                        <h5 class="card-title">Package Information</h5>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Name</ td>
+                                                    <td>${data.package.package_name}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Type</ td>
+                                                    <td>${data.package.package_type}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Maktab</ td>
+                                                    <td>${data.package.maktab}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Country</ td>
+                                                    <td>${data.package.country}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Days</ td>
+                                                    <td>${data.package.package_days}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Sale Price (SAR)</ td>
+                                                    <td>${data.package.package_sale_price_sar}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Exchange Rate</td>
+                                                    <td >${data.package.exchange_rate}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Sale Price (PKR)</td>
+                                                    <td>${data.package.package_sale_price_pkr}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Terms and Conditions</ td>
+                                                    <td>${data.package.terms_and_conditions}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>`;
+                                $('#package_master').html(master_ui);
+                                //detail table
+
+                                var hotel_ui = `<h5 class="card-title">Hotel Detail</h5><table><thead><tr><th>City</th><th>Hotel</th><th>Room Type</th><th>Check In Date</th><th>Check Out Date</th><th>Meal</th><th>Nights</th><th>Cost</th><th>Currency</th></tr></thead><tbody>`;
+                                var tr = ``;
+                                if (data.package_items) {
+                                    var items  = data.package_items;
+
+                                    items.forEach(function (item) {
+                                        tr = `<tr>
+                                                <td>${item.city_name}</td>
+                                                <td>${item.hotel_name}</td>
+                                                <td>${item.room_type_name}</td>
+                                                <td>${item.check_in_date}</td>
+                                                <td>${item.check_out_date}</td>
+                                                <td>${item.meal}</td>
+                                                <td>${item.nights}</td>
+                                                <td>${item.cost}</td>
+                                                <td>${item.currency}</td>
+                                              </tr>`;
+                                        hotel_ui += tr;
+                                    });
+                                  hotel_ui +=`</tbody></table>`;
+
+                                  $('#package_hotel').html(hotel_ui);
+                                } else {
+                                    alert('No Hotel Detail Found');
+                                }
+                                //detail table end
+                            } else {
+                                alert('No Data Found');
+                            }
+                        },
+                        error: function (data) {
+                            alert('An error occurred.');
+                        }
+                    });
+                } else {
+                    alert("Package is required");
+                }
+
+            });
+            //fetch package end
+        });
+
 
     </script>
 {% endblock %}

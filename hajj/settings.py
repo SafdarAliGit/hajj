@@ -41,10 +41,8 @@ INSTALLED_APPS = [
     'user',
     'dashboard',
     'hajj_application',
-    'locations',
     'package_making',
-    'supplier',
-    'rooms',
+    'master_data',
 ]
 
 

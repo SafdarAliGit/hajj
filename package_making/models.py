@@ -2,9 +2,7 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
-from locations.models import Country, City
-from rooms.models import RoomType
-from supplier.models import Supplier
+from master_data.models import Supplier, Country, City, RoomType
 
 
 class TimeStampModel(models.Model):
@@ -114,12 +112,12 @@ class Package(TimeStampModel):
     country_code = models.CharField(max_length=10, verbose_name='Country Code')
     package_days = models.IntegerField(verbose_name='Package Days')
     maktab = models.CharField(max_length=1, choices=MAKTAB_CHOICES, verbose_name='Maktab')
-    package_sale_price_sar = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Package Sale Price(SAR)')
+    package_sale_price_sar = models.DecimalField(max_digits=10, decimal_places=2,
+                                                 verbose_name='Package Sale Price(SAR)')
     exchange_rate = models.DecimalField(max_digits=10, decimal_places=8, verbose_name='Exchange Rate')
-    package_sale_price_pkr = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Package Sale Price(PKR)')
+    package_sale_price_pkr = models.DecimalField(max_digits=10, decimal_places=2,
+                                                 verbose_name='Package Sale Price(PKR)')
     terms_and_conditions = models.TextField(verbose_name='Terms and Conditions')
-
-
 
     class Meta:
         verbose_name = 'Package'
@@ -148,7 +146,7 @@ class PackageHotelItem(TimeStampModel):
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='City')
     city_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='City Name')
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, verbose_name='Hotel')
-    hotel_name= models.CharField(max_length=100, blank=True, null=True, verbose_name='Hotel Name')
+    hotel_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Hotel Name')
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name='Room Type')
     room_type_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Room Type Name')
     check_in_date = models.DateField(verbose_name='Check In Date')

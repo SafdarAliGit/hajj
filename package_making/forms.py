@@ -11,3 +11,4 @@ class PackageHotelItemForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['meal'].widget.attrs['class'] = "meal"
+        self.fields['cost'].widget.attrs['class'] = "cost"

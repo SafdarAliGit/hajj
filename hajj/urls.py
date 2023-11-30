@@ -17,6 +17,9 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+admin.site.site_header = "Hajj App Admin"
+admin.site.site_title = "Hajj App"
+admin.site.index_title = "Welcome to Hajj App Admin"
 
 from hajj import settings
 
