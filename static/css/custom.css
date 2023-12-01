@@ -100,7 +100,7 @@ form {
 }
 
 .heading {
-    opacity: .8;
+    /*opacity: .8;*/
     padding-top: 3px;
     border-bottom: solid 2px rgb(159, 162, 167);
     position: fixed;
@@ -503,8 +503,8 @@ legend{
 /* Style for the tab group container */
 .tab_group {
     display: flex;
-    border-bottom: 2px solid #ffffff;
-    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #1375d5;
+    border-top: 2px solid #1375d5;
 }
 
 /* Style for each tab */
