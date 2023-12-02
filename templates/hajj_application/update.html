@@ -380,7 +380,8 @@
                 </form>
             </div>
             <div id="tab2" class="tab-content">
-                tab 2
+              <div id="package_master"></div>
+                <div id="package_hotel"></div>
             </div>
 
         </div>
@@ -443,7 +444,107 @@
             });
         });
         //preview image end
+
+            //fetch package
+
+                var package_id = $("#id_package").val();
+
+                if (package_id) {
+                    $.ajax({
+                        url: `/hajj_application/get_package?package_id=${package_id}`,
+                        type: 'GET',
+                        success: function (data) {
+                            if (data.success && data.package) {
+                                var master_ui = `
+                                        <h5 class="card-title">Package Information</h5>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Name</ td>
+                                                    <td>${data.package.package_name}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Type</ td>
+                                                    <td>${data.package.package_type}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Maktab</ td>
+                                                    <td>${data.package.maktab}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Country</ td>
+                                                    <td>${data.package.country}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Days</ td>
+                                                    <td>${data.package.package_days}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Sale Price (SAR)</ td>
+                                                    <td>${data.package.package_sale_price_sar}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Exchange Rate</td>
+                                                    <td >${data.package.exchange_rate}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Package Sale Price (PKR)</td>
+                                                    <td>${data.package.package_sale_price_pkr}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35%;font-weight:bold; ">Terms and Conditions</ td>
+                                                    <td>${data.package.terms_and_conditions}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>`;
+                                $('#package_master').html(master_ui);
+                                //detail table
+
+                                var hotel_ui = `<h5 class="card-title">Hotel Detail</h5><table><thead><tr><th>City</th><th>Hotel</th><th>Room Type</th><th>Check In Date</th><th>Check Out Date</th><th>Meal</th><th>Nights</th><th>Cost</th><th>Currency</th></tr></thead><tbody>`;
+                                var tr = ``;
+                                if (data.package_items) {
+                                    var items  = data.package_items;
+
+                                    items.forEach(function (item) {
+                                        tr = `<tr>
+                                                <td>${item.city_name}</td>
+                                                <td>${item.hotel_name}</td>
+                                                <td>${item.room_type_name}</td>
+                                                <td>${item.check_in_date}</td>
+                                                <td>${item.check_out_date}</td>
+                                                <td>${item.meal}</td>
+                                                <td>${item.nights}</td>
+                                                <td>${item.cost}</td>
+                                                <td>${item.currency}</td>
+                                              </tr>`;
+                                        hotel_ui += tr;
+                                    });
+                                  hotel_ui +=`</tbody></table>`;
+
+                                  $('#package_hotel').html(hotel_ui);
+                                } else {
+                                    alert('No Hotel Detail Found');
+                                }
+                                //detail table end
+                            } else {
+                                alert('No Data Found');
+                            }
+                        },
+                        error: function (data) {
+                            alert('An error occurred.');
+                        }
+                    });
+                } else {
+                    alert("Package is required");
+                }
+
+            //fetch package end
+
     </script>
+
+
+
+
 {% endblock %}
 
 
