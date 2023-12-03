@@ -15,8 +15,11 @@
                 <thead>
                 <tr>
                     <th>Hajj Application #</th>
-                    <th>Group Coordinator's Application #</th>
-                    <th>Staty Duration</th>
+                    <th>Name of Applicant</th>
+                    <th>Father/Husband Name</th>
+                    <th>Contact#</th>
+                    <th>Enrollment#</th>
+                    <th>Package Name</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -24,8 +27,11 @@
                     <tr>
                         <td><a href="{% url "hajj_application:detail" item.pk %}"
                                style="text-decoration: none; border: 0;">{{ item.hajj_application_no }}</a></td>
-                        <td>{{ item.group_coordinator_application_no }}</td>
-                        <td>{{ item.stay_duration }}</td>
+                        <td>{{ item.name_of_applicant_as_per_passport }}</td>
+                        <td>{{ item.father_husband_name }}</td>
+                        <td>{{ item.mobile_no }}</td>
+                        <td>{{ item.enrollment_no }}</td>
+                        <td>{{ item.package }}</td>
                          <td><a href="{% url "hajj_application:update" item.pk %}"
                                style="text-decoration: none; border: 0;margin-right: 20px;"><i
                                 class="fa fa-pencil-square-o"
